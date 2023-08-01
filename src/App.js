@@ -27,7 +27,8 @@ const deleteTask =(id)=>{
   setTasks(tasks.filter((task)=>task.id !== id))
 }
 const toggleRemainder = (id)=>{
-
+ setTasks(tasks.map(task =>
+  task.id === id?{...task,remainder:!task.remainder}:task))
 }
   return (
     <div className="container">
