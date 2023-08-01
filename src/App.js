@@ -1,6 +1,7 @@
 
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 import {useState} from 'react';
 function App() {
   const [tasks,setTasks] = useState( [
@@ -27,12 +28,13 @@ const deleteTask =(id)=>{
   setTasks(tasks.filter((task)=>task.id !== id))
 }
 const toggleRemainder = (id)=>{
- setTasks(tasks.map(task =>
+ setTasks(tasks.map((task) =>
   task.id === id?{...task,remainder:!task.remainder}:task))
 }
   return (
     <div className="container">
      <Header title ='Task tracker'/>
+     <AddTask/>
      {tasks.length>0?<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleRemainder}/>:'No Task to Show'}
     </div>
   );
