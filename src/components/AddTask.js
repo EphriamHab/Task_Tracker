@@ -1,11 +1,24 @@
 import { useState } from "react"
 
-const AddTask =()=>{
+const AddTask =({onAdd})=>{
     const [text,setText] = useState('')
     const [day,setDay] = useState('')
     const [remainder,setRemainder] = useState(false)
+
+    const onSubmit = (e)=>{
+        e.preventDefault();
+        if(!text){
+            alert('please add a task')
+            return
+        }
+        onAdd ({text,day,remainder})
+
+        setText('')
+        setDay('')
+        setRemainder(false)
+    }
     return(
-        <form className="add-form">
+        <form className="add-form" onSubmit={onSubmit}>
             <div className='form-control'>
                 <label>Task</label>
                 <input type="text" 
@@ -28,6 +41,7 @@ const AddTask =()=>{
                 <label>Set Remainder</label>
                 <input 
                 type="checkbox"
+                checked={remainder}
                 value={remainder} 
                 onChange={(e)=> setRemainder(e
                 .currentTarget.checked)}
