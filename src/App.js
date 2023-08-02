@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
+import Footer from "./components/Footer";
 
 function App() {
   const [showAddTask,setShowAddTask] = useState(false)
@@ -69,6 +70,7 @@ const toggleRemainder = async (id)=>{
      <Header title ='Task tracker' onAdd={()=>setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
      {showAddTask &&<AddTask onAdd={addTask}/>}
      {tasks.length>0?<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleRemainder}/>:'No Task to Show'}
+    <Footer/>
     </div>
   );
 }
