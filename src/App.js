@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {BrowserRouter as Router,Route} from "react-router"
+import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
@@ -72,7 +72,7 @@ const toggleRemainder = async (id)=>{
     <Router>
     <div className="container">
      <Header title ='Task tracker' onAdd={()=>setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
-     
+     <Routes>
     <Route path='/' exact render={(props)=>
     (
       <>
@@ -81,6 +81,7 @@ const toggleRemainder = async (id)=>{
       </>
     )}/>
     <Route path='/about'component={About}/>
+    </Routes>
     <Footer/>
     </div>
     </Router>
